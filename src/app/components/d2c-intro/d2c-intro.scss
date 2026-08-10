@@ -1,0 +1,138 @@
+.d2c-intro {
+  background: #ECF9F0;
+  padding: 40px 24px 90px;
+
+  &__header {
+    max-width: 640px;
+    margin: 0 auto 50px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeDown 0.6s ease forwards;
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      color: #080819;
+      margin: 0 0 16px;
+
+      .accent { color: #2A9F46; }
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #4b5a53;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  &__body {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  &__media {
+    position: relative;
+    opacity: 0;
+    animation: slideFromLeft 0.7s ease 0.2s forwards;
+
+    img.d2c-intro__dashboard {
+      width: 100%;
+      display: block;
+      animation: floaty 3.5s ease-in-out infinite;
+      animation-delay: 0.9s; // starts after slide-in finishes
+    }
+  }
+
+  &__whatsapp-icon {
+    position: absolute;
+    top: -20px;
+    right: 10%;
+    width: 48px;
+    height: 48px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    opacity: 0;
+    animation: slideFromRight 0.7s ease 0.4s forwards;
+  }
+
+  &__badge {
+    background: #33A658;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  &__text p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #4b5a53;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__cta {
+    background: #2A9F46;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover { background: #23883b; }
+  }
+
+  @media (max-width: 900px) {
+    &__body { grid-template-columns: 1fr; }
+  }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d2c-intro__header,
+  .d2c-intro__media,
+  .d2c-intro__text {
+    animation: none;
+    opacity: 1;
+  }
+
+  .d2c-intro__media img.d2c-intro__dashboard {
+    animation: none;
+  }
+}

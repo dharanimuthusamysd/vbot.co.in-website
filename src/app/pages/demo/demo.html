@@ -1,0 +1,181 @@
+<app-navbar></app-navbar>
+
+<section class="vb-book">
+  <div class="vb-container vb-book__grid">
+
+    <!-- LEFT: info panel -->
+    <aside class="vb-book__info">
+      <div class="vb-book__brand">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" fill="white" fill-opacity="0.15" stroke="white" stroke-width="1.5"/>
+          <path d="M8 11L12 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>V-<em>bot</em></span>
+      </div>
+
+      <h1>See <span>Vbot</span> in Action</h1>
+      <p class="vb-book__lede">
+        Book a live walkthrough of the real Vbot dashboard — no generic slides,
+        just the product, tailored to how your team would actually use it.
+      </p>
+
+      <ul class="vb-book__expect">
+        <li *ngFor="let item of whatToExpect">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1FA34C"/><path d="M8 12.5L10.5 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {{ item }}
+        </li>
+      </ul>
+
+      <div class="vb-book__trust">
+        <div class="vb-book__trust-item" *ngFor="let t of trustPoints">
+          <ng-container [ngSwitch]="t.kind">
+            <svg *ngSwitchCase="'response'" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.6"/>
+              <path d="M12 7V12L15 14" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg *ngSwitchCase="'duration'" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.6"/>
+              <path d="M8.5 12.5L11 15L15.5 9.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg *ngSwitchCase="'availability'" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3.5" y="5" width="17" height="15" rx="2" stroke="white" stroke-width="1.6"/>
+              <path d="M3.5 9.5H20.5M8 3V6.5M16 3V6.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </ng-container>
+          <div>
+            <strong>{{ t.value }}</strong>
+            <span>{{ t.label }}</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="vb-book__timezone">All times shown in {{ timezoneLabel }}</p>
+    </aside>
+
+    <!-- RIGHT: booking card -->
+    <div class="vb-book__card">
+
+      <!-- Confirmation state -->
+      <div class="vb-book__confirm" *ngIf="submitted; else bookingFlow">
+        <div class="vb-book__confirm-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1FA34C"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Demo Scheduled</h2>
+        <p>
+          {{ selectedDateLabel }} at <strong>{{ selectedTime }}</strong> ({{ timezoneLabel }})
+        </p>
+        <p class="vb-book__confirm-sub">
+          A confirmation with a calendar invite has been sent to <strong>{{ form.email }}</strong>.
+        </p>
+        <button class="vb-btn vb-btn-outline" (click)="bookAnother()">Book a Different Time</button>
+      </div>
+
+      <!-- Booking flow -->
+      <ng-template #bookingFlow>
+
+        <div class="vb-book__meta">
+          <span class="vb-book__duration">{{ demoDurationLabel }} demo</span>
+          <span class="vb-book__availability">{{ availabilityLabel }}</span>
+        </div>
+
+        <!-- Calendar -->
+        <div class="vb-book__calendar">
+          <div class="vb-book__calendar-head">
+            <button type="button" (click)="prevMonth()" aria-label="Previous month">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <strong>{{ monthLabel }}</strong>
+            <button type="button" (click)="nextMonth()" aria-label="Next month">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="vb-book__weekdays">
+            <span *ngFor="let w of weekDayLabels">{{ w }}</span>
+          </div>
+
+          <div class="vb-book__days">
+            <button
+              type="button"
+              *ngFor="let d of calendarDays"
+              class="vb-book__day"
+              [class.vb-book__day--muted]="!d.inCurrentMonth"
+              [class.vb-book__day--disabled]="!isSelectable(d)"
+              [class.vb-book__day--today]="d.isToday"
+              [class.vb-book__day--selected]="isSelectedDay(d)"
+              [disabled]="!isSelectable(d)"
+              (click)="selectDay(d)"
+            >
+              {{ d.day }}
+            </button>
+          </div>
+
+          <p class="vb-book__closed-note">Closed on Sundays</p>
+        </div>
+
+        <!-- Time slots -->
+        <div class="vb-book__times" *ngIf="selectedDate">
+          <h3>{{ selectedDateLabel }}</h3>
+
+          <div class="vb-book__slots" *ngIf="timeSlots.length; else noSlots">
+            <button
+              type="button"
+              *ngFor="let slot of timeSlots"
+              class="vb-book__slot"
+              [class.vb-book__slot--selected]="selectedTime === slot"
+              (click)="selectTime(slot)"
+            >
+              {{ slot }}
+            </button>
+          </div>
+
+          <ng-template #noSlots>
+            <p class="vb-book__no-slots">No slots left today — try another date.</p>
+          </ng-template>
+        </div>
+
+        <!-- Details form -->
+        <form class="vb-book__form" *ngIf="selectedDate && selectedTime" (submit)="$event.preventDefault(); submit()">
+          <h3>Your Details</h3>
+
+          <div class="vb-book__field">
+            <label for="vb-name">Full Name *</label>
+            <input id="vb-name" type="text" name="name" [(ngModel)]="form.name" required placeholder="Your name" />
+          </div>
+
+          <div class="vb-book__field">
+            <label for="vb-email">Work Email *</label>
+            <input id="vb-email" type="email" name="email" [(ngModel)]="form.email" required placeholder="you@company.com" />
+          </div>
+
+          <div class="vb-book__row">
+            <div class="vb-book__field">
+              <label for="vb-phone">Phone</label>
+              <input id="vb-phone" type="tel" name="phone" [(ngModel)]="form.phone" placeholder="+91 00000 00000" />
+            </div>
+            <div class="vb-book__field">
+              <label for="vb-company">Company</label>
+              <input id="vb-company" type="text" name="company" [(ngModel)]="form.company" placeholder="Your brand" />
+            </div>
+          </div>
+
+          <div class="vb-book__field">
+            <label for="vb-notes">Anything specific you'd like covered?</label>
+            <textarea id="vb-notes" name="notes" rows="3" [(ngModel)]="form.notes" placeholder="Optional"></textarea>
+          </div>
+
+          <p class="vb-book__error" *ngIf="submitError">{{ submitError }}</p>
+
+<button type="submit" class="vb-btn vb-btn-primary vb-book__submit" [disabled]="!canSubmit">
+  {{ submitting ? 'Booking...' : 'Confirm Demo — ' + selectedDateLabel + ', ' + selectedTime }}
+</button>
+
+
+        </form>
+
+      </ng-template>
+    </div>
+
+  </div>
+</section>
+<app-footer></app-footer>

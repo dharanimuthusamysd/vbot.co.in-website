@@ -1,0 +1,141 @@
+.hero {
+  background: #ECF9F0;
+  padding: 60px 24px 80px;
+  overflow: hidden;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  &__content {
+    animation: heroFadeUp 0.6s ease both;
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 1.15;
+    color: #080819;
+    margin: 0 0 20px;
+
+    &--accent { color: #2A9F46; }
+  }
+
+  &__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4b5a53;
+    max-width: 460px;
+    margin-bottom: 28px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &--primary {
+      background: #2A9F46;
+      color: #fff;
+      border: none;
+
+      &:hover { background: #23883b; }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: #1a2e22;
+      border: 1.5px solid #cfd9d3;
+
+      &:hover { border-color: #2A9F46; }
+    }
+  }
+
+  &__trust {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    color: #4b5a53;
+
+    .check { color: #2A9F46; margin-right: 4px; }
+  }
+
+  &__media {
+    position: relative;
+    animation: heroFadeUp 0.6s ease 0.15s both;
+  }
+
+  &__laptop {
+    width: 100%;
+    display: block;
+  }
+
+  &__whatsapp-icon {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+
+    &--top { top: -10px; right: 20%; }
+    &--bottom { bottom: 0; right: 0; }
+  }
+
+  &__notification {
+    position: absolute;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    small { display: block; font-weight: 400; color: #8b9a92; font-size: 11px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #2A9F46; }
+
+    &--1 { top: 5%; right: -5%; }
+    &--2 { top: 35%; right: -8%; }
+    &--3 { top: 60%; right: -5%; }
+    &--4 { top: 82%; right: -8%; }
+  }
+
+  @media (max-width: 900px) {
+    &__inner { grid-template-columns: 1fr; }
+    &__notification { display: none; }
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

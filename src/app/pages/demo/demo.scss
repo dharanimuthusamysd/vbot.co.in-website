@@ -1,0 +1,464 @@
+.vb-book {
+  // Self-contained tokens — this page doesn't rely on a global _variables.scss import.
+  --vb-green: #1FA34C;
+  --vb-green-dark: #178A40;
+  --vb-green-light: #EAF7EE;
+  --vb-green-pale: #F4FBF6;
+  --vb-navy: #16241D;
+  --vb-text: #171B1E;
+  --vb-text-muted: #5B6670;
+  --vb-border: #E4EBE6;
+  --vb-white: #FFFFFF;
+
+  --vb-radius-sm: 8px;
+  --vb-radius-md: 14px;
+  --vb-radius-lg: 24px;
+
+  --vb-shadow-sm: 0 2px 8px rgba(16, 36, 24, 0.06);
+  --vb-shadow-md: 0 8px 24px rgba(16, 36, 24, 0.10);
+  --vb-shadow-lg: 0 16px 48px rgba(16, 36, 24, 0.14);
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  min-height: 100vh;
+  background: var(--vb-green-pale);
+  padding: 32px 0 56px;
+
+  &__grid {
+    display: block;
+    background: var(--vb-white);
+    border-radius: var(--vb-radius-lg);
+    box-shadow: var(--vb-shadow-lg);
+    overflow: hidden;
+  }
+  
+  &__error {
+  color: #d92d20;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+  // ---------- TOP: green banner ----------
+  &__info {
+    background: var(--vb-green);
+    color: var(--vb-white);
+    padding: 48px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--vb-radius-lg) var(--vb-radius-lg) 0 0;
+
+    @media (max-width: 640px) {
+      padding: 32px 24px 28px;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    img { width: 26px; height: 26px; filter: brightness(0) invert(1); }
+
+    span {
+      font-size: 18px;
+      font-weight: 800;
+      em { font-style: normal; opacity: 0.85; }
+    }
+  }
+
+  &__info h1 {
+    font-size: clamp(26px, 3.2vw, 34px);
+    font-weight: 800;
+    line-height: 1.2;
+
+    span {
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.5);
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__lede {
+    margin: 16px auto 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    opacity: 0.92;
+    max-width: 520px;
+  }
+
+  &__expect {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 28px;
+    max-width: 680px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      line-height: 1.5;
+
+      svg { flex-shrink: 0; }
+    }
+  }
+
+  &__trust {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px 40px;
+    width: 100%;
+  }
+
+  &__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    strong { display: block; font-size: 14px; }
+    span { font-size: 12px; opacity: 0.8; }
+  }
+
+  &__timezone {
+    margin-top: 20px;
+    font-size: 11.5px;
+    opacity: 0.75;
+  }
+
+  // ---------- BOTTOM: booking card ----------
+  &__card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 40px;
+
+    @media (max-width: 640px) {
+      padding: 28px 20px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__duration,
+  &__availability {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--vb-green-light);
+    color: var(--vb-green-dark);
+  }
+
+  // Calendar
+  &__calendar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    strong {
+      font-size: 15px;
+      color: var(--vb-text);
+    }
+
+    button {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--vb-border);
+      background: var(--vb-white);
+      color: var(--vb-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover { background: var(--vb-green-light); }
+    }
+  }
+
+  &__weekdays {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+    span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--vb-text-muted);
+    }
+  }
+
+  &__days {
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+
+  &__day {
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--vb-text);
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background: var(--vb-green-light);
+    }
+
+    &--muted {
+      color: var(--vb-text-muted);
+      opacity: 0.4;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      color: var(--vb-text-muted);
+      opacity: 0.35;
+    }
+
+    &--today {
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1.5px var(--vb-green);
+    }
+
+    &--selected {
+      background: var(--vb-green);
+      color: var(--vb-white);
+      font-weight: 700;
+    }
+  }
+
+  &__closed-note {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--vb-text-muted);
+  }
+
+  // Time slots
+  &__times {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--vb-border);
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--vb-text);
+      margin-bottom: 14px;
+    }
+  }
+
+  &__slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    @media (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__slot {
+    padding: 10px 8px;
+    border-radius: var(--vb-radius-sm);
+    border: 1.5px solid var(--vb-border);
+    background: var(--vb-white);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vb-text);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--vb-green);
+    }
+
+    &--selected {
+      background: var(--vb-green);
+      border-color: var(--vb-green);
+      color: var(--vb-white);
+    }
+  }
+
+  &__no-slots {
+    font-size: 13px;
+    color: var(--vb-text-muted);
+  }
+
+  // Form
+  &__form {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--vb-border);
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--vb-text);
+      margin-bottom: 16px;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+
+    label {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--vb-text);
+    }
+
+    input,
+    textarea {
+      border: 1.5px solid var(--vb-border);
+      border-radius: var(--vb-radius-sm);
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--vb-text);
+      outline: none;
+      resize: vertical;
+
+      &:focus {
+        border-color: var(--vb-green);
+      }
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 8px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // Confirmation state
+  &__confirm {
+    text-align: center;
+    padding: 48px 12px;
+
+    h2 {
+      margin-top: 16px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--vb-text);
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--vb-text-muted);
+    }
+  }
+
+  &__confirm-sub {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__confirm-icon {
+    display: inline-flex;
+  }
+
+  .vb-btn {
+    margin-top: 24px;
+  }
+}
+
+// Button classes — inlined here so this page doesn't depend on a global
+// _variables.scss for .vb-btn / .vb-btn-primary / .vb-btn-outline.
+.vb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.vb-btn-primary {
+  background: #1FA34C;
+  color: #FFFFFF;
+}
+.vb-btn-primary:hover {
+  background: #178A40;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(16, 36, 24, 0.10);
+}
+
+.vb-btn-outline {
+  background: transparent;
+  color: #178A40;
+  border: 1.5px solid #1FA34C;
+}
+.vb-btn-outline:hover {
+  background: #EAF7EE;
+}
+
+// .vb-container was only ever defined globally — inlining it here too so this
+// page centers and width-caps correctly even without the global stylesheet.
+.vb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// .vb-book__grid also carries the .vb-container class (for outer centering),
+// but its own padding must be 0 so the green banner and white card fill this
+// rounded box edge-to-edge instead of leaving a white gap on the sides.
+.vb-book .vb-book__grid.vb-container {
+  padding: 0;
+}
+

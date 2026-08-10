@@ -1,0 +1,83 @@
+.shopify-integration {
+  background: #fff;
+  padding: 60px 24px 60px;
+
+  &__header {
+    max-width: 700px;
+    margin: 0 auto 0px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      color: #080819;
+      margin: 0 0 14px;
+      .accent { color: #2A9F46; }
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #4b5a53;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  &__media {
+    position: relative;
+    max-width: 1150px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  &__image {
+    max-width: 1150px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__curtain {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+  }
+
+  &.is-visible {
+    .shopify-integration__header {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .shopify-integration__curtain {
+      animation: wipeReveal 1s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
+    }
+  }
+}
+
+@keyframes wipeReveal {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shopify-integration {
+    &__header {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    &__curtain {
+      display: none;
+    }
+  }
+}

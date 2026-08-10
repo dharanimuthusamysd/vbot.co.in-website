@@ -1,0 +1,53 @@
+.logo-strip {
+  background: #ECF9F0;
+  padding: 20px 0 70px;
+  text-align: center;
+
+  &__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: #080819;
+    margin: 0 0 40px;
+
+    .accent { color: #2A9F46; }
+  }
+
+  &__viewport {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+    mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: max-content;
+    animation: logo-scroll 22s linear infinite;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+    img {
+      height: 110px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  }
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-strip__track {
+    animation: none;
+  }
+}

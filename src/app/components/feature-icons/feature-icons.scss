@@ -1,0 +1,88 @@
+.feature-icons {
+  background: #fff;
+  padding: 60px 24px;
+
+  &__grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  &__item {
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+    }
+
+    // stagger each card
+    &:nth-child(1) { animation-delay: 0.05s; }
+    &:nth-child(2) { animation-delay: 0.15s; }
+    &:nth-child(3) { animation-delay: 0.25s; }
+    &:nth-child(4) { animation-delay: 0.35s; }
+    &:nth-child(5) { animation-delay: 0.45s; }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #080819;
+      margin: 14px 0 8px;
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #8b9a92;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ECF9F0;
+    border-radius: 12px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  &__item:hover &__icon {
+    transform: scale(1.15) rotate(-6deg);
+  }
+
+  @media (max-width: 900px) {
+    &__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+}
+
+@keyframes pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-icons__item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .feature-icons__item:hover,
+  .feature-icons__item:hover .feature-icons__icon {
+    transform: none;
+  }
+}

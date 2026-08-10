@@ -1,0 +1,214 @@
+<app-navbar></app-navbar>
+
+<main>
+  <div class="content-container">
+
+    <div class="page-header reveal">
+      <div class="section-label">Legal</div>
+      <h1>Terms &amp; Conditions</h1>
+      <p class="meta">Effective Date: <strong>{{ effectiveDate }}</strong></p>
+      <div class="header-actions no-print">
+        <button class="btn-print" (click)="print()"><i class="fas fa-print"></i> Print</button>
+        <button class="btn-download" (click)="print()"><i class="fas fa-download"></i> Download</button>
+      </div>
+    </div>
+
+    <div class="warning-banner reveal">
+      <i class="fas fa-exclamation-triangle"></i>
+      <div>
+        <strong>Important Notice</strong>
+        <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Vbot if you do not agree to take all of the terms and conditions stated on this page.</p>
+      </div>
+    </div>
+
+    <div class="policy-card">
+
+      <div class="toc-box no-print reveal">
+        <h3><i class="fas fa-list-ol"></i> Table of Contents</h3>
+        <div class="toc-grid">
+          <a *ngFor="let item of toc; let i = index" class="toc-item" (click)="scrollTo(item.id)">
+            <span class="toc-num">{{ i + 1 }}</span><span>{{ item.label }}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-1">
+        <h2>1. Introduction</h2>
+        <p>Welcome to <strong>Vbot</strong>! These terms and conditions outline the rules and regulations for the use of Vbot's website and Service.</p>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-info-circle"></i> Terminology</div>
+          <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements:</p>
+          <ul>
+            <li><span class="legal-term">"Client", "You" and "Your"</span> — refers to you, the person accessing this website and accepting the Company's terms and conditions.</li>
+            <li><span class="legal-term">"The Company", "Ourselves", "We", "Our" and "Us"</span> — refers to Vbot.</li>
+            <li><span class="legal-term">"Party", "Parties", or "Us"</span> — refers to both the Client and ourselves.</li>
+          </ul>
+          <p>All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-2">
+        <h2>2. Cookies</h2>
+        <p>We employ the use of cookies. By accessing Vbot, you agreed to use cookies in agreement with Vbot's Privacy Policy.</p>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-info-circle"></i> Cookie Usage</div>
+          <p>Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-3">
+        <h2>3. License</h2>
+        <p>Unless otherwise stated, Vbot and/or its licensors own the intellectual property rights for all material on Vbot. All intellectual property rights are reserved. You may access this for your own personal use subjected to restrictions set in these terms and conditions.</p>
+        <h3>You must not:</h3>
+        <div class="permissions-grid">
+          <div class="permission-item not-allowed">
+            <div class="permission-icon not-allowed"><i class="fas fa-times"></i></div>
+            <div><h4>Republish Material</h4><p>Republish material from Vbot</p></div>
+          </div>
+          <div class="permission-item not-allowed">
+            <div class="permission-icon not-allowed"><i class="fas fa-times"></i></div>
+            <div><h4>Sell or Rent</h4><p>Sell, rent or sub-license material from Vbot</p></div>
+          </div>
+          <div class="permission-item not-allowed">
+            <div class="permission-icon not-allowed"><i class="fas fa-times"></i></div>
+            <div><h4>Duplicate Content</h4><p>Reproduce, duplicate or copy material from Vbot</p></div>
+          </div>
+          <div class="permission-item not-allowed">
+            <div class="permission-icon not-allowed"><i class="fas fa-times"></i></div>
+            <div><h4>Redistribute</h4><p>Redistribute content from Vbot</p></div>
+          </div>
+        </div>
+        <p>This Agreement shall begin on the date hereof.</p>
+      </div>
+
+      <div class="policy-block reveal" id="sec-4">
+        <h2>4. Comments</h2>
+        <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Vbot does not filter, edit, publish or review Comments prior to their presence on the website.</p>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-exclamation-circle"></i> Disclaimer</div>
+          <p>Comments do not reflect the views and opinions of Vbot, its agents and/or affiliates. To the extent permitted by applicable laws, Vbot shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+        </div>
+        <h3>You warrant and represent that:</h3>
+        <ol class="alpha">
+          <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
+          <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li>
+          <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy;</li>
+          <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+        </ol>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-shield-alt"></i> Moderation</div>
+          <p>Vbot reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-5">
+        <h2>5. Hyperlinking to our Content</h2>
+        <h3>5.1. Organizations that may link without approval</h3>
+        <ul>
+          <li><i class="fas fa-check check-icon"></i> Government agencies</li>
+          <li><i class="fas fa-check check-icon"></i> Search engines</li>
+          <li><i class="fas fa-check check-icon"></i> News organizations</li>
+          <li><i class="fas fa-check check-icon"></i> Online directory distributors</li>
+        </ul>
+        <p>These organizations may link to our home page so long as the link is not deceptive, does not falsely imply sponsorship, and fits within the context of the linking party's site.</p>
+
+        <h3>5.2. Organizations that may request approval</h3>
+        <div class="permissions-grid">
+          <div class="permission-item allowed"><div class="permission-icon allowed"><i class="fas fa-check"></i></div><div><h4>Consumer/Business Info</h4><p>Commonly-known consumer and/or business information sources</p></div></div>
+          <div class="permission-item allowed"><div class="permission-icon allowed"><i class="fas fa-check"></i></div><div><h4>Community Sites</h4><p>dot.com community sites</p></div></div>
+          <div class="permission-item allowed"><div class="permission-icon allowed"><i class="fas fa-check"></i></div><div><h4>Directories</h4><p>Online directory distributors</p></div></div>
+          <div class="permission-item allowed"><div class="permission-icon allowed"><i class="fas fa-check"></i></div><div><h4>Professional Firms</h4><p>Accounting, law and consulting firms</p></div></div>
+        </div>
+
+        <h3>5.3. Link Request Process</h3>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-file-alt"></i> If you wish to link to our website, please include:</div>
+          <ul>
+            <li>Your name and organization name</li>
+            <li>Contact information</li>
+            <li>URL of your site and the URLs you intend to link</li>
+          </ul>
+          <p><strong>Wait 2–3 weeks for a response.</strong></p>
+        </div>
+
+        <h3>5.4. Approved linking methods</h3>
+        <div class="link-methods-grid">
+          <div class="link-method-card"><i class="fas fa-building"></i><h4>By corporate name</h4><p>Use of our corporate name</p></div>
+          <div class="link-method-card"><i class="fas fa-link"></i><h4>By URL</h4><p>Use of the uniform resource locator being linked to</p></div>
+          <div class="link-method-card"><i class="fas fa-align-left"></i><h4>By description</h4><p>Use of any other description that makes sense within context</p></div>
+        </div>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-ban"></i> Logo Usage Prohibited</div>
+          <p>No use of Vbot's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-6">
+        <h2>6. iFrames</h2>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-exclamation-circle"></i> Important Restriction</div>
+          <p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-7">
+        <h2>7. Content Liability</h2>
+        <p>We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website.</p>
+      </div>
+
+      <div class="policy-block reveal" id="sec-8">
+        <h2>8. Reservation of Rights</h2>
+        <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request.</p>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-sync-alt"></i> Policy Updates</div>
+          <p>We also reserve the right to amend these terms and conditions and its linking policy at any time.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-9">
+        <h2>9. Removal of Links from our Website</h2>
+        <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any moment. We will consider requests to remove links but are not obligated to do so.</p>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</div>
+          <p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-10">
+        <h2>10. Disclaimer</h2>
+        <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+        <ol class="alpha">
+          <li>limit or exclude our or your liability for death or personal injury;</li>
+          <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+          <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+          <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+        </ol>
+        <div class="highlight-box">
+          <div class="hb-title"><i class="fas fa-balance-scale"></i> Limitation of Liability</div>
+          <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+        </div>
+      </div>
+
+      <div class="policy-block reveal" id="sec-11">
+        <h2>11. Contact Us</h2>
+        <div class="contact-box">
+          <h3><i class="fas fa-envelope"></i> Get in Touch</h3>
+          <p>If you have any questions about these Terms &amp; Conditions, please contact us:</p>
+          <div class="contact-row"><i class="fas fa-at"></i><span>Email: <strong><a href="mailto:vbot@gmail.com">vbot@gmail.com</a></strong></span></div>
+        </div>
+      </div>
+
+      <div class="footer-nav no-print reveal">
+        <div class="footer-nav-btns">
+          <a routerLink="/" class="fn-btn fn-btn-primary"><i class="fas fa-home"></i> Back to Home</a>
+          <button class="fn-btn fn-btn-secondary" (click)="scrollToTop()"><i class="fas fa-arrow-up"></i> Back to Top</button>
+          <a routerLink="/privacy-policy" class="fn-btn fn-btn-ghost"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+        </div>
+        <p class="footer-copy">&copy; {{ currentYear }} Vbot. All rights reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

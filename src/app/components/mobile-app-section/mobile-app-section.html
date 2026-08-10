@@ -1,0 +1,95 @@
+<!-- mobile-app-section.html -->
+<section class="mobile-app" aria-labelledby="mobile-app-title" appRevealOnScroll>
+  <div class="mobile-app__inner">
+    <!-- Content Column -->
+    <div class="mobile-app__content">
+      <div class="mobile-app__badge">
+        <span class="mobile-app__badge-icon">📱</span>
+        Available on Play Store
+      </div>
+
+      <h2 id="mobile-app-title" class="mobile-app__title">
+        VBot Mobile App — <br />
+        <span class="mobile-app__title--accent">Your Business, Anywhere</span>
+      </h2>
+
+      <p class="mobile-app__description">
+        The VBot Mobile App brings the full power of the VBot platform to your 
+        smartphone, enabling business owners and teams to stay connected with 
+        customers anytime, anywhere. Available on the Play Store, it delivers 
+        Real-Time communication and business management in one powerful mobile 
+        application.
+      </p>
+
+      <!-- Feature Cards -->
+      <div class="mobile-app__features">
+        <div class="mobile-app__feature" *ngFor="let feature of features">
+          <div class="mobile-app__feature-icon">{{ feature.icon }}</div>
+          <div class="mobile-app__feature-content">
+            <h3 class="mobile-app__feature-title">{{ feature.title }}</h3>
+            <p class="mobile-app__feature-description">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mobile-app__actions">
+        <button 
+          type="button" 
+          class="mobile-app__btn mobile-app__btn--primary" 
+          (click)="downloadApp()"
+          [disabled]="isLoading()">
+          <ng-container *ngIf="isLoading(); else downloadText">
+            <span class="spinner" aria-hidden="true"></span> Loading...
+          </ng-container>
+<ng-template #downloadText>
+  Download App
+</ng-template>
+        </button>
+
+
+      </div>
+
+      <!-- Stats -->
+      <div class="mobile-app__stats">
+        <div class="mobile-app__stat" *ngFor="let stat of stats">
+          <span class="mobile-app__stat-number">{{ stat.number }}</span>
+          <span class="mobile-app__stat-label">{{ stat.label }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Mockup Column -->
+    <div class="mobile-app__media" aria-hidden="true">
+      <div class="mobile-app__phone-mockup">
+        <img 
+          class="mobile-app__phone-image" 
+          src="images/mob.png" 
+          alt="VBot mobile app interface showing business dashboard, customer conversations, and automation features"
+          loading="lazy"
+          width="300"
+          height="600" />
+        
+
+
+        <!-- Play Store Badge -->
+        <div class="mobile-app__store-badge">
+          <a
+
+  href="https://play.google.com/store/apps/details?id=com.vbot.app&pcampaignid=web_share"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img 
+    src="images/play.png" 
+    alt="Get it on Google Play"
+    loading="lazy"
+    width="160"
+    height="60"
+  />
+</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

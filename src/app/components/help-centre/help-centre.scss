@@ -1,0 +1,217 @@
+.help-centre {
+  background: #fff;
+  padding: 60px 24px 80px;
+
+  &__grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+
+    img {
+      width: 44px;
+      opacity: 0;
+      transform: scale(0.5) rotate(-15deg);
+      transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: #2A9F46;
+      margin: 0;
+    }
+  }
+
+  &__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #8b9a92;
+    margin: 2px 0 0;
+  }
+
+  &__desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #4b5a53;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  &__search {
+    display: flex;
+    border: 1px solid #dfe7e2;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    input {
+      flex: 1;
+      border: none;
+      padding: 12px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    button {
+      background: #2A9F46;
+      border: none;
+      color: #fff;
+      padding: 0 16px;
+      cursor: pointer;
+    }
+  }
+
+  &__label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #8b9a92;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ECF9F0;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: left;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+
+      &:nth-child(1) { transition-delay: 0.3s; }
+      &:nth-child(2) { transition-delay: 0.4s; }
+      &:nth-child(3) { transition-delay: 0.5s; }
+      &:nth-child(4) { transition-delay: 0.6s; }
+
+      strong {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        color: #080819;
+      }
+
+      small {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10.5px;
+        color: #8b9a72;
+      }
+    }
+  }
+
+  &__trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+
+    span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 11.5px;
+      color: #080819;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      small {
+        font-weight: 400;
+        color: #8b9a92;
+        font-size: 10.5px;
+      }
+    }
+  }
+
+  &__media {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.6s ease 0.2s;
+
+    img.help-centre__laptop { width: 100%; display: block; }
+    img.help-centre__phone {
+      position: absolute;
+      width: 26%;
+      bottom: -20px;
+      right: -5%;
+    }
+  }
+
+  &__chat-badge {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    background: #2A9F46;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+    transition: opacity 0.5s ease 0.9s, transform 0.5s ease 0.9s;
+
+    small { display: block; font-weight: 400; font-size: 10.5px; opacity: 0.85; }
+  }
+
+  &.is-visible {
+    .help-centre__heading img {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .help-centre__topics button {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .help-centre__media {
+      opacity: 1;
+    }
+
+    .help-centre__chat-badge {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__grid { grid-template-columns: 1fr; }
+    &__trust { grid-template-columns: 1fr 1fr; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .help-centre {
+    &__heading img,
+    &__topics button,
+    &__media,
+    &__chat-badge {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
